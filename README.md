@@ -36,7 +36,7 @@ You will need Node.js and npm/yarn installed.
 1. Clone the repository:
 
    ```
-   git clone https://github.com/ShaharearSabbir/everyday-finds](https://github.com/ShaharearSabbir/everyday-finds)
+   git clone https://github.com/ShaharearSabbir/everyday-finds
    cd everyday-finds
    ```
 
