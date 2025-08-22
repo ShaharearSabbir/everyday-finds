@@ -1,0 +1,37 @@
+"use client";
+import { signOut } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+const UserDropdown = ({ user }) => {
+  return (
+    <div className="dropdown dropdown-hover dropdown-end">
+      <div tabIndex={0} role="button">
+        <Image
+          src={
+            user.image ||
+            "https://cdn.prod.website-files.com/67891024ed5394ef2059ff76/6795975173dc15b38db607d6_fallback-profile-image_1.jpg"
+          }
+          height={32}
+          width={32}
+          alt="user profile"
+          className="rounded-full"
+        />
+      </div>
+      <ul
+        tabIndex={0}
+        className="dropdown-content menu bg-base-100 rounded-box z-1 w-32 p-2 shadow-sm"
+      >
+        <li>
+          <Link href={"/"}>Dashboard</Link>
+        </li>
+        <li>
+          <button onClick={() => signOut()}>Logout</button>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+export default UserDropdown;
