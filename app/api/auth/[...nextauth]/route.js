@@ -38,6 +38,7 @@ export const authOptions = {
             email: user.email,
             role: user.role,
             image: user.image,
+            id: user._id,
           };
         } else {
           return null;
@@ -53,6 +54,9 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  pages: {
+    signIn: "/login",
+  },
   session: {
     strategy: "jwt",
   },
@@ -68,6 +72,7 @@ export const authOptions = {
       if (token) {
         session.user.role = token.role;
         session.user.image = token.image;
+        session.user.id = token.id;
       }
       return session;
     },
@@ -76,6 +81,7 @@ export const authOptions = {
       if (user) {
         token.role = user.role || "user";
         token.image = user.image || null;
+        token.id = user.id || null;
       }
       return token;
     },

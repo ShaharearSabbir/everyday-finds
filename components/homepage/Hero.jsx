@@ -17,13 +17,16 @@ const Hero = () => {
           variants={container("BTT", 0.2)}
           initial="initial"
           animate="animate"
-          className="max-w-lg space-y-4"
+          className="max-w-screen-md space-y-4"
         >
-          <H1>Discover Your Natural Glow</H1>
+          <h5 className="font-semibold tracking-tight text-lg">
+            From fresh produce to household goods, discover a curated selection
+            for your daily needs.
+          </h5>
+          <H1>Your Everyday Essentials, All in One Place</H1>
           <P>
-            Experience the power of nature with our thoughtfully crafted organic
-            products. Made with the purest ingredients, our collection is
-            designed to nourish your body and elevate your daily rituals.
+            Experience the convenience of online shopping with a diverse range
+            of quality products at your fingertips.
           </P>
           <motion.button
             whileHover={{ width: 150 }}

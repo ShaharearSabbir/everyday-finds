@@ -3,6 +3,7 @@ import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import ActiveLink from "../ui/ActiveLink";
 
 const UserDropdown = ({ user }) => {
   return (
@@ -13,10 +14,10 @@ const UserDropdown = ({ user }) => {
             user.image ||
             "https://cdn.prod.website-files.com/67891024ed5394ef2059ff76/6795975173dc15b38db607d6_fallback-profile-image_1.jpg"
           }
-          height={32}
-          width={32}
+          height={50}
+          width={50}
           alt="user profile"
-          className="rounded-full"
+          className="rounded-full aspect-square border border-primary hover:border-accent"
         />
       </div>
       <ul
@@ -24,7 +25,13 @@ const UserDropdown = ({ user }) => {
         className="dropdown-content menu bg-base-100 rounded-box z-1 w-32 p-2 shadow-sm"
       >
         <li>
-          <Link href={"/"}>Dashboard</Link>
+          <ActiveLink href={"/dashboard"}>Dashboard</ActiveLink>
+        </li>
+        <li className="lg:hidden">
+          <ActiveLink href="/">Home</ActiveLink>
+        </li>
+        <li className="lg:hidden">
+          <ActiveLink href="/products">Products</ActiveLink>
         </li>
         <li>
           <button onClick={() => signOut()}>Logout</button>

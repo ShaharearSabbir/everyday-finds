@@ -18,7 +18,9 @@ export async function connectToDatabase() {
   await client.connect();
 
   cachedClient = client;
-  cachedDb = client.db("everydayFinds");
+  // Get the database from the client.
+  // The database name is automatically inferred from the URI.
+  cachedDb = client.db();
 
   return { client: cachedClient, db: cachedDb };
 }

@@ -9,6 +9,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "i.ibb.co.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
         hostname: "*.googleusercontent.com",
         pathname: "**",
       },

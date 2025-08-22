@@ -1,48 +1,83 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
-import logo from "@/assets/logo.png";
 import Link from "next/link";
 import Section from "./ui/Section";
 import { useSession } from "next-auth/react";
 import UserDropdown from "./Auth/UserDropdown";
+import { usePathname } from "next/navigation";
+import BrandLogo from "./BrandLogo";
+import ActiveLink from "./ui/ActiveLink";
+import { Menu } from "lucide-react";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
-
-  console.log(session);
+  const pathname = usePathname();
 
   const user = session?.user;
+
+  const NoNavRoutes = ["/dashboard"];
+  const shouldHideNavbar = NoNavRoutes.some((route) =>
+    pathname.startsWith(route)
+  );
+
+  if (shouldHideNavbar) {
+    return null;
+  }
+
   const links = (
     <>
-      <li>
-        <a href="/">Home</a>
-      </li>
+      <ActiveLink href="/">Home</ActiveLink>
+      <ActiveLink href="/products">Products</ActiveLink>
     </>
   );
+
   return (
-    <div className="bg-base-300 py-2">
+    <div className="bg-base-300 py-4 text-lg font-bold">
       <Section className="flex items-center justify-between">
-        <Image
-          src={logo}
-          width={378}
-          height={256}
-          className="h-15 w-30"
-          alt="everyday finds logo"
-        />
-        <ul>{links}</ul>
+        <BrandLogo />
+        <div className="hidden lg:flex gap-4 items-center justify-center *:px-2 *:py-1 *:rounded-lg">
+          {links}
+        </div>
         <div className="flex items-center gap-4">
           {user ? (
             <UserDropdown user={user} />
           ) : (
             <>
-              <Link className="btn btn-primary rounded-lg" href="/login">
-                Login
-              </Link>
-              <Link className="btn btn-accent rounded-lg" href="/register">
-                Register
-              </Link>
+              <div className="hidden space-x-4 lg:block">
+                <Link className="btn btn-primary rounded-lg" href="/login">
+                  Login
+                </Link>
+                <Link className="btn btn-accent rounded-lg" href="/register">
+                  Register
+                </Link>
+              </div>
+              <div className=" lg:hidden dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle"
+                >
+                  <Menu size={50} />
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-32 p-2 shadow"
+                >
+                  <li>
+                    <ActiveLink href="/">Home</ActiveLink>
+                  </li>
+                  <li>
+                    <ActiveLink href="/products">Products</ActiveLink>
+                  </li>
+                  <li>
+                    <ActiveLink href="/login">Login</ActiveLink>
+                  </li>
+                  <li>
+                    <ActiveLink href="/register">Register</ActiveLink>
+                  </li>
+                </ul>
+              </div>
             </>
           )}
         </div>
