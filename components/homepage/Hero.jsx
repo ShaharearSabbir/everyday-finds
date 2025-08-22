@@ -7,6 +7,7 @@ import hero from "@/assets/hero.png";
 import Image from "next/image";
 import P from "../ui/P";
 import { container } from "@/animation/animate";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -28,12 +29,14 @@ const Hero = () => {
             Experience the convenience of online shopping with a diverse range
             of quality products at your fingertips.
           </P>
-          <motion.button
-            whileHover={{ width: 150 }}
-            className="btn btn-accent rounded-lg justify-between"
-          >
-            <p>Shop Now</p> <ArrowRight />
-          </motion.button>
+          <Link href={"/products"}>
+            <motion.button
+              whileHover={{ width: 150 }}
+              className="btn btn-accent rounded-lg justify-between"
+            >
+              <p>Shop Now</p> <ArrowRight />
+            </motion.button>
+          </Link>
         </motion.div>
         {/* Image */}
         <motion.div
