@@ -1,9 +1,7 @@
-"use client";
-import { signOut } from "next-auth/react";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import ActiveLink from "../ui/ActiveLink";
+import Logout from "./Logout";
 
 const UserDropdown = ({ user }) => {
   return (
@@ -34,7 +32,7 @@ const UserDropdown = ({ user }) => {
           <ActiveLink href="/products">Products</ActiveLink>
         </li>
         <li>
-          <button onClick={() => signOut()}>Logout</button>
+          <Logout />
         </li>
       </ul>
     </div>

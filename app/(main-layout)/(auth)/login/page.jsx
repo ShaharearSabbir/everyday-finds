@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { getErrorMessages } from "@/utils/auth-errors";
 import { useRouter } from "next/navigation";
 import SocialLogin from "@/components/Auth/SocialLogin";
+import Link from "next/link";
 
 const Login = () => {
   const searchParams = useSearchParams();
@@ -39,6 +40,9 @@ const Login = () => {
       <form onSubmit={handleLogin}>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
+            <h1 className="text-2xl lg:text-3xl font-bold text-center">
+              Login now!
+            </h1>
             <fieldset className="fieldset">
               <label className="label">Email</label>
               <input
@@ -66,6 +70,15 @@ const Login = () => {
                 Login
               </button>
             </fieldset>
+            <p>
+              New here?{" "}
+              <Link
+                href={"/register"}
+                className="text-primary font-semibold hover:text-accent"
+              >
+                Register
+              </Link>
+            </p>
             <SocialLogin />
           </div>
         </div>

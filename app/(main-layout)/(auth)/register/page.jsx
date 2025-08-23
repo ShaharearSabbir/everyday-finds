@@ -4,6 +4,7 @@ import { createUser } from "@/actions/user";
 import SocialLogin from "@/components/Auth/SocialLogin";
 import uploadImage from "@/utils/uploadImage";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const Register = () => {
@@ -31,8 +32,10 @@ const Register = () => {
     <div>
       <form onSubmit={handleRegister}>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <h1 className="text-5xl font-bold">Register now!</h1>
           <div className="card-body">
+            <h1 className="text-2xl lg:text-3xl font-bold text-center">
+              Register now!
+            </h1>
             <fieldset className="fieldset">
               <label className="label">Name</label>
               <input
@@ -70,6 +73,15 @@ const Register = () => {
                 Register
               </button>
             </fieldset>
+            <p>
+              Already have an account?{" "}
+              <Link
+                href={"/login"}
+                className="text-primary font-semibold hover:text-accent"
+              >
+                Login
+              </Link>
+            </p>
             <SocialLogin />
           </div>
         </div>

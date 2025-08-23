@@ -1,29 +1,16 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import Section from "./ui/Section";
-import { useSession } from "next-auth/react";
 import UserDropdown from "./Auth/UserDropdown";
-import { usePathname } from "next/navigation";
 import BrandLogo from "./BrandLogo";
 import ActiveLink from "./ui/ActiveLink";
 import { Menu } from "lucide-react";
+import { getServerSession } from "next-auth";
 
-const Navbar = () => {
-  const { data: session, status } = useSession();
-  const pathname = usePathname();
+const Navbar = async () => {
+  const session = await getServerSession();
 
   const user = session?.user;
-
-  const NoNavRoutes = ["/dashboard"];
-  const shouldHideNavbar = NoNavRoutes.some((route) =>
-    pathname.startsWith(route)
-  );
-
-  if (shouldHideNavbar) {
-    return null;
-  }
 
   const links = (
     <>

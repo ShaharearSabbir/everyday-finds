@@ -1,22 +1,7 @@
-"use client";
-
-import Image from "next/image";
-import { usePathname } from "next/navigation";
 import React from "react";
 import BrandLogo from "./BrandLogo";
 
 const Footer = () => {
-  const pathname = usePathname();
-
-  const NoFooterRoutes = ["/dashboard"];
-  const shouldHideFooter = NoFooterRoutes.some((route) =>
-    pathname.startsWith(route)
-  );
-
-  if (shouldHideFooter) {
-    return null;
-  }
-
   return (
     <footer className="footer footer-horizontal footer-center bg-base-300 text-primary-content p-10">
       <aside>
